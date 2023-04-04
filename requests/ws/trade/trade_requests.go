@@ -1,6 +1,6 @@
 package trade
 
-import "github.com/amir-the-h/okex"
+import "github.com/mikel973/okex"
 
 type (
 	PlaceOrder struct {
@@ -12,11 +12,11 @@ type (
 		ReduceOnly bool              `json:"reduceOnly,omitempty"`
 		Sz         float64           `json:"sz,string"`
 		Px         float64           `json:"px,omitempty,string"`
-		TdMode     okex.TradeMode    `json:"tdMode"`
-		Side       okex.OrderSide    `json:"side"`
-		PosSide    okex.PositionSide `json:"posSide,omitempty"`
-		OrdType    okex.OrderType    `json:"ordType"`
-		TgtCcy     okex.QuantityType `json:"tgtCcy,omitempty"`
+		TdMode     test.TradeMode    `json:"tdMode"`
+		Side       test.OrderSide    `json:"side"`
+		PosSide    test.PositionSide `json:"posSide,omitempty"`
+		OrdType    test.OrderType    `json:"ordType"`
+		TgtCcy     test.QuantityType `json:"tgtCcy,omitempty"`
 	}
 	CancelOrder struct {
 		ID      string `json:"-"`

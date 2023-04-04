@@ -1,7 +1,7 @@
 package subaccount
 
 import (
-	"github.com/amir-the-h/okex"
+	"github.com/mikel973/okex"
 )
 
 type (
@@ -11,7 +11,7 @@ type (
 		Mobile  string        `json:"mobile,omitempty"`
 		GAuth   bool          `json:"gAuth"`
 		Enable  bool          `json:"enable"`
-		TS      okex.JSONTime `json:"ts"`
+		TS      test.JSONTime `json:"ts"`
 	}
 	APIKey struct {
 		SubAcct    string        `json:"subAcct,omitempty"`
@@ -21,16 +21,16 @@ type (
 		Passphrase string        `json:"Passphrase,omitempty"`
 		Perm       string        `json:"perm,omitempty"`
 		IP         string        `json:"ip,omitempty"`
-		TS         okex.JSONTime `json:"ts,omitempty"`
+		TS         test.JSONTime `json:"ts,omitempty"`
 	}
 	HistoryTransfer struct {
 		SubAcct string         `json:"subAcct,omitempty"`
 		Ccy     string         `json:"ccy,omitempty"`
-		BillID  okex.JSONInt64 `json:"billId,omitempty"`
-		Type    okex.BillType  `json:"type,omitempty,string"`
-		TS      okex.JSONTime  `json:"ts,omitempty"`
+		BillID  test.JSONInt64 `json:"billId,omitempty"`
+		Type    test.BillType  `json:"type,omitempty,string"`
+		TS      test.JSONTime  `json:"ts,omitempty"`
 	}
 	Transfer struct {
-		TransID okex.JSONInt64 `json:"transId"`
+		TransID test.JSONInt64 `json:"transId"`
 	}
 )

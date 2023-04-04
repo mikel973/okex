@@ -3,7 +3,7 @@ package tradedata
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/amir-the-h/okex"
+	"github.com/mikel973/okex"
 	"strconv"
 	"time"
 )
@@ -17,29 +17,29 @@ type (
 	TakerVolume struct {
 		SellVol float64
 		BuyVol  float64
-		TS      okex.JSONTime
+		TS      test.JSONTime
 	}
 	Ratio struct {
 		Ratio float64
-		TS    okex.JSONTime
+		TS    test.JSONTime
 	}
 	InterestAndVolumeRatio struct {
 		Oi  float64
 		Vol float64
-		TS  okex.JSONTime
+		TS  test.JSONTime
 	}
 	PutCallRatio struct {
 		OiRatio  float64
 		VolRatio float64
-		TS       okex.JSONTime
+		TS       test.JSONTime
 	}
 	InterestAndVolumeExpiry struct {
 		CallOI  float64
 		PutOI   float64
 		CallVol float64
 		PutVol  float64
-		ExpTime okex.JSONTime
-		TS      okex.JSONTime
+		ExpTime test.JSONTime
+		TS      test.JSONTime
 	}
 	InterestAndVolumeStrike struct {
 		Strike  float64
@@ -47,7 +47,7 @@ type (
 		PutOI   float64
 		CallVol float64
 		PutVol  float64
-		TS      okex.JSONTime
+		TS      test.JSONTime
 	}
 	TakerFlow struct {
 		CallBuyVol   float64
@@ -56,7 +56,7 @@ type (
 		PutSellVol   float64
 		CallBlockVol float64
 		PutBlockVol  float64
-		TS           okex.JSONTime
+		TS           test.JSONTime
 	}
 )
 

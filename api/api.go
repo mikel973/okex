@@ -2,9 +2,9 @@ package api
 
 import (
 	"context"
-	"github.com/amir-the-h/okex"
-	"github.com/amir-the-h/okex/api/rest"
-	"github.com/amir-the-h/okex/api/ws"
+	"github.com/mikel973/okex"
+	"github.com/mikel973/okex/api/rest"
+	"github.com/mikel973/okex/api/ws"
 )
 
 // Client is the main api wrapper of okex
@@ -15,23 +15,23 @@ type Client struct {
 }
 
 // NewClient returns a pointer to a fresh Client
-func NewClient(ctx context.Context, apiKey, secretKey, passphrase string, destination okex.Destination) (*Client, error) {
-	restURL := okex.RestURL
-	wsPubURL := okex.PublicWsURL
-	wsPriURL := okex.PrivateWsURL
+func NewClient(ctx context.Context, apiKey, secretKey, passphrase string, destination test.Destination) (*Client, error) {
+	restURL := test.RestURL
+	wsPubURL := test.PublicWsURL
+	wsPriURL := test.PrivateWsURL
 	switch destination {
-	case okex.AwsServer:
-		restURL = okex.AwsRestURL
-		wsPubURL = okex.AwsPublicWsURL
-		wsPriURL = okex.AwsPrivateWsURL
-	case okex.DemoServer:
-		restURL = okex.DemoRestURL
-		wsPubURL = okex.DemoPublicWsURL
-		wsPriURL = okex.DemoPrivateWsURL
+	case test.AwsServer:
+		restURL = test.AwsRestURL
+		wsPubURL = test.AwsPublicWsURL
+		wsPriURL = test.AwsPrivateWsURL
+	case test.DemoServer:
+		restURL = test.DemoRestURL
+		wsPubURL = test.DemoPublicWsURL
+		wsPriURL = test.DemoPrivateWsURL
 	}
 
 	r := rest.NewClient(apiKey, secretKey, passphrase, restURL, destination)
-	c := ws.NewClient(ctx, apiKey, secretKey, passphrase, map[bool]okex.BaseURL{true: wsPriURL, false: wsPubURL})
+	c := ws.NewClient(ctx, apiKey, secretKey, passphrase, map[bool]test.BaseURL{true: wsPriURL, false: wsPubURL})
 
 	return &Client{r, c, ctx}, nil
 }

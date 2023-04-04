@@ -7,9 +7,9 @@ import (
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
-	"github.com/amir-the-h/okex"
-	requests "github.com/amir-the-h/okex/requests/rest/public"
-	responses "github.com/amir-the-h/okex/responses/public_data"
+	"github.com/mikel973/okex"
+	requests "github.com/mikel973/okex/requests/rest/public"
+	responses "github.com/mikel973/okex/responses/public_data"
 	"net/http"
 	"strings"
 	"time"
@@ -27,13 +27,13 @@ type ClientRest struct {
 	apiKey      string
 	secretKey   []byte
 	passphrase  string
-	destination okex.Destination
-	baseURL     okex.BaseURL
+	destination test.Destination
+	baseURL     test.BaseURL
 	client      *http.Client
 }
 
 // NewClient returns a pointer to a fresh ClientRest
-func NewClient(apiKey, secretKey, passphrase string, baseURL okex.BaseURL, destination okex.Destination) *ClientRest {
+func NewClient(apiKey, secretKey, passphrase string, baseURL test.BaseURL, destination test.Destination) *ClientRest {
 	c := &ClientRest{
 		apiKey:      apiKey,
 		secretKey:   []byte(secretKey),
@@ -102,7 +102,7 @@ func (c *ClientRest) Do(method, path string, private bool, params ...map[string]
 		r.Header.Add("OK-ACCESS-SIGN", sign)
 		r.Header.Add("OK-ACCESS-TIMESTAMP", timestamp)
 	}
-	if c.destination == okex.DemoServer {
+	if c.destination == test.DemoServer {
 		r.Header.Add("x-simulated-trading", "1")
 	}
 	return c.client.Do(r)
@@ -114,7 +114,7 @@ func (c *ClientRest) Do(method, path string, private bool, params ...map[string]
 // https://www.okex.com/docs-v5/en/#rest-api-status
 func (c *ClientRest) Status(req requests.Status) (response responses.Status, err error) {
 	p := "/api/v5/system/status"
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	res, err := c.Do(http.MethodGet, p, false, m)
 	if err != nil {
 		return

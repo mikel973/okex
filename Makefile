@@ -16,7 +16,7 @@ all: okex
 okex: ## Build the binary file
 	@go mod download
 	@go mod tidy
-	@go build -o $(GOBIN)/$(BINARY_NAME)  ./cmd/okex/main.go
+	@go build -o $(GOBIN)/$(BINARY_NAME)  ./cmd/okex/*.go
 	@echo "Done building."
 	@echo "Go to build folder and run \"$(GOBIN)/$(BINARY_NAME)\" to launch."
 .PHONY: okex

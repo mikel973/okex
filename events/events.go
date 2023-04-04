@@ -2,7 +2,7 @@ package events
 
 import (
 	"encoding/json"
-	"github.com/amir-the-h/okex"
+	"github.com/mikel973/okex"
 )
 
 type (
@@ -11,7 +11,7 @@ type (
 		Event string         `json:"event"`
 		Code  int            `json:"code,omitempty,string"`
 		Msg   string         `json:"msg,omitempty"`
-		Op    okex.Operation `json:"op,omitempty"`
+		Op    test.Operation `json:"op,omitempty"`
 		Arg   *Argument      `json:"arg,omitempty"`
 		Args  []*Argument    `json:"args,omitempty"`
 		Data  []*Argument    `json:"data,omitempty"`
@@ -24,14 +24,14 @@ type (
 		Code int            `json:"code,omitempty,string"`
 		Msg  string         `json:"msg,omitempty"`
 		ID   string         `json:"id,omitempty"`
-		Op   okex.Operation `json:"op,omitempty"`
+		Op   test.Operation `json:"op,omitempty"`
 		Data []*Argument    `json:"data,omitempty"`
 	}
 	Error struct {
 		Event string         `json:"event,omitempty"`
 		Msg   string         `json:"msg,omitempty"`
 		Op    string         `json:"op,omitempty"`
-		Code  okex.JSONInt64 `json:"code"`
+		Code  test.JSONInt64 `json:"code"`
 		Args  []*Argument    `json:"args,omitempty"`
 		Arg   *Argument      `json:"arg,omitempty"`
 		Data  []*Argument    `json:"data,omitempty"`

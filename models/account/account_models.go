@@ -1,46 +1,46 @@
 package account
 
 import (
-	"github.com/amir-the-h/okex"
+	"github.com/mikel973/okex"
 )
 
 type (
 	Balance struct {
-		TotalEq     okex.JSONFloat64  `json:"totalEq"`
-		IsoEq       okex.JSONFloat64  `json:"isoEq"`
-		AdjEq       okex.JSONFloat64  `json:"adjEq,omitempty"`
-		OrdFroz     okex.JSONFloat64  `json:"ordFroz,omitempty"`
-		Imr         okex.JSONFloat64  `json:"imr,omitempty"`
-		Mmr         okex.JSONFloat64  `json:"mmr,omitempty"`
-		MgnRatio    okex.JSONFloat64  `json:"mgnRatio,omitempty"`
-		NotionalUsd okex.JSONFloat64  `json:"notionalUsd,omitempty"`
+		TotalEq     test.JSONFloat64  `json:"totalEq"`
+		IsoEq       test.JSONFloat64  `json:"isoEq"`
+		AdjEq       test.JSONFloat64  `json:"adjEq,omitempty"`
+		OrdFroz     test.JSONFloat64  `json:"ordFroz,omitempty"`
+		Imr         test.JSONFloat64  `json:"imr,omitempty"`
+		Mmr         test.JSONFloat64  `json:"mmr,omitempty"`
+		MgnRatio    test.JSONFloat64  `json:"mgnRatio,omitempty"`
+		NotionalUsd test.JSONFloat64  `json:"notionalUsd,omitempty"`
 		Details     []*BalanceDetails `json:"details,omitempty"`
-		UTime       okex.JSONTime     `json:"uTime"`
+		UTime       test.JSONTime     `json:"uTime"`
 	}
 	BalanceDetails struct {
 		Ccy           string           `json:"ccy"`
-		Eq            okex.JSONFloat64 `json:"eq"`
-		CashBal       okex.JSONFloat64 `json:"cashBal"`
-		IsoEq         okex.JSONFloat64 `json:"isoEq,omitempty"`
-		AvailEq       okex.JSONFloat64 `json:"availEq,omitempty"`
-		DisEq         okex.JSONFloat64 `json:"disEq"`
-		AvailBal      okex.JSONFloat64 `json:"availBal"`
-		FrozenBal     okex.JSONFloat64 `json:"frozenBal"`
-		OrdFrozen     okex.JSONFloat64 `json:"ordFrozen"`
-		Liab          okex.JSONFloat64 `json:"liab,omitempty"`
-		Upl           okex.JSONFloat64 `json:"upl,omitempty"`
-		UplLib        okex.JSONFloat64 `json:"uplLib,omitempty"`
-		CrossLiab     okex.JSONFloat64 `json:"crossLiab,omitempty"`
-		IsoLiab       okex.JSONFloat64 `json:"isoLiab,omitempty"`
-		MgnRatio      okex.JSONFloat64 `json:"mgnRatio,omitempty"`
-		Interest      okex.JSONFloat64 `json:"interest,omitempty"`
-		Twap          okex.JSONFloat64 `json:"twap,omitempty"`
-		MaxLoan       okex.JSONFloat64 `json:"maxLoan,omitempty"`
-		EqUsd         okex.JSONFloat64 `json:"eqUsd"`
-		NotionalLever okex.JSONFloat64 `json:"notionalLever,omitempty"`
-		StgyEq        okex.JSONFloat64 `json:"stgyEq"`
-		IsoUpl        okex.JSONFloat64 `json:"isoUpl,omitempty"`
-		UTime         okex.JSONTime    `json:"uTime"`
+		Eq            test.JSONFloat64 `json:"eq"`
+		CashBal       test.JSONFloat64 `json:"cashBal"`
+		IsoEq         test.JSONFloat64 `json:"isoEq,omitempty"`
+		AvailEq       test.JSONFloat64 `json:"availEq,omitempty"`
+		DisEq         test.JSONFloat64 `json:"disEq"`
+		AvailBal      test.JSONFloat64 `json:"availBal"`
+		FrozenBal     test.JSONFloat64 `json:"frozenBal"`
+		OrdFrozen     test.JSONFloat64 `json:"ordFrozen"`
+		Liab          test.JSONFloat64 `json:"liab,omitempty"`
+		Upl           test.JSONFloat64 `json:"upl,omitempty"`
+		UplLib        test.JSONFloat64 `json:"uplLib,omitempty"`
+		CrossLiab     test.JSONFloat64 `json:"crossLiab,omitempty"`
+		IsoLiab       test.JSONFloat64 `json:"isoLiab,omitempty"`
+		MgnRatio      test.JSONFloat64 `json:"mgnRatio,omitempty"`
+		Interest      test.JSONFloat64 `json:"interest,omitempty"`
+		Twap          test.JSONFloat64 `json:"twap,omitempty"`
+		MaxLoan       test.JSONFloat64 `json:"maxLoan,omitempty"`
+		EqUsd         test.JSONFloat64 `json:"eqUsd"`
+		NotionalLever test.JSONFloat64 `json:"notionalLever,omitempty"`
+		StgyEq        test.JSONFloat64 `json:"stgyEq"`
+		IsoUpl        test.JSONFloat64 `json:"isoUpl,omitempty"`
+		UTime         test.JSONTime    `json:"uTime"`
 	}
 	Position struct {
 		InstID      string              `json:"instId"`
@@ -50,64 +50,64 @@ type (
 		Ccy         string              `json:"ccy"`
 		PosID       string              `json:"posId"`
 		TradeID     string              `json:"tradeId"`
-		Pos         okex.JSONFloat64    `json:"pos"`
-		AvailPos    okex.JSONFloat64    `json:"availPos,omitempty"`
-		AvgPx       okex.JSONFloat64    `json:"avgPx"`
-		Upl         okex.JSONFloat64    `json:"upl"`
-		UplRatio    okex.JSONFloat64    `json:"uplRatio"`
-		Lever       okex.JSONFloat64    `json:"lever"`
-		LiqPx       okex.JSONFloat64    `json:"liqPx,omitempty"`
-		Imr         okex.JSONFloat64    `json:"imr,omitempty"`
-		Margin      okex.JSONFloat64    `json:"margin,omitempty"`
-		MgnRatio    okex.JSONFloat64    `json:"mgnRatio"`
-		Mmr         okex.JSONFloat64    `json:"mmr"`
-		Liab        okex.JSONFloat64    `json:"liab,omitempty"`
-		Interest    okex.JSONFloat64    `json:"interest"`
-		NotionalUsd okex.JSONFloat64    `json:"notionalUsd"`
-		ADL         okex.JSONFloat64    `json:"adl"`
-		Last        okex.JSONFloat64    `json:"last"`
-		DeltaBS     okex.JSONFloat64    `json:"deltaBS"`
-		DeltaPA     okex.JSONFloat64    `json:"deltaPA"`
-		GammaBS     okex.JSONFloat64    `json:"gammaBS"`
-		GammaPA     okex.JSONFloat64    `json:"gammaPA"`
-		ThetaBS     okex.JSONFloat64    `json:"thetaBS"`
-		ThetaPA     okex.JSONFloat64    `json:"thetaPA"`
-		VegaBS      okex.JSONFloat64    `json:"vegaBS"`
-		VegaPA      okex.JSONFloat64    `json:"vegaPA"`
-		PosSide     okex.PositionSide   `json:"posSide"`
-		MgnMode     okex.MarginMode     `json:"mgnMode"`
-		InstType    okex.InstrumentType `json:"instType"`
-		CTime       okex.JSONTime       `json:"cTime"`
-		UTime       okex.JSONTime       `json:"uTime"`
+		Pos         test.JSONFloat64    `json:"pos"`
+		AvailPos    test.JSONFloat64    `json:"availPos,omitempty"`
+		AvgPx       test.JSONFloat64    `json:"avgPx"`
+		Upl         test.JSONFloat64    `json:"upl"`
+		UplRatio    test.JSONFloat64    `json:"uplRatio"`
+		Lever       test.JSONFloat64    `json:"lever"`
+		LiqPx       test.JSONFloat64    `json:"liqPx,omitempty"`
+		Imr         test.JSONFloat64    `json:"imr,omitempty"`
+		Margin      test.JSONFloat64    `json:"margin,omitempty"`
+		MgnRatio    test.JSONFloat64    `json:"mgnRatio"`
+		Mmr         test.JSONFloat64    `json:"mmr"`
+		Liab        test.JSONFloat64    `json:"liab,omitempty"`
+		Interest    test.JSONFloat64    `json:"interest"`
+		NotionalUsd test.JSONFloat64    `json:"notionalUsd"`
+		ADL         test.JSONFloat64    `json:"adl"`
+		Last        test.JSONFloat64    `json:"last"`
+		DeltaBS     test.JSONFloat64    `json:"deltaBS"`
+		DeltaPA     test.JSONFloat64    `json:"deltaPA"`
+		GammaBS     test.JSONFloat64    `json:"gammaBS"`
+		GammaPA     test.JSONFloat64    `json:"gammaPA"`
+		ThetaBS     test.JSONFloat64    `json:"thetaBS"`
+		ThetaPA     test.JSONFloat64    `json:"thetaPA"`
+		VegaBS      test.JSONFloat64    `json:"vegaBS"`
+		VegaPA      test.JSONFloat64    `json:"vegaPA"`
+		PosSide     test.PositionSide   `json:"posSide"`
+		MgnMode     test.MarginMode     `json:"mgnMode"`
+		InstType    test.InstrumentType `json:"instType"`
+		CTime       test.JSONTime       `json:"cTime"`
+		UTime       test.JSONTime       `json:"uTime"`
 	}
 	BalanceAndPosition struct {
-		EventType okex.EventType    `json:"eventType"`
-		PTime     okex.JSONTime     `json:"pTime"`
-		UTime     okex.JSONTime     `json:"uTime"`
+		EventType test.EventType    `json:"eventType"`
+		PTime     test.JSONTime     `json:"pTime"`
+		UTime     test.JSONTime     `json:"uTime"`
 		PosData   []*Position       `json:"posData"`
 		BalData   []*BalanceDetails `json:"balData"`
 	}
 	PositionAndAccountRisk struct {
-		AdjEq   okex.JSONFloat64                     `json:"adjEq,omitempty"`
+		AdjEq   test.JSONFloat64                     `json:"adjEq,omitempty"`
 		BalData []*PositionAndAccountRiskBalanceData `json:"balData"`
 		PosData []*PositionAndAccountRiskBalanceData `json:"posData"`
-		TS      okex.JSONTime                        `json:"ts"`
+		TS      test.JSONTime                        `json:"ts"`
 	}
 	PositionAndAccountRiskBalanceData struct {
 		Ccy   string           `json:"ccy"`
-		Eq    okex.JSONFloat64 `json:"eq"`
-		DisEq okex.JSONFloat64 `json:"disEq"`
+		Eq    test.JSONFloat64 `json:"eq"`
+		DisEq test.JSONFloat64 `json:"disEq"`
 	}
 	PositionAndAccountRiskPositionData struct {
 		InstID      string              `json:"instId"`
 		PosCcy      string              `json:"posCcy,omitempty"`
 		Ccy         string              `json:"ccy"`
-		NotionalCcy okex.JSONFloat64    `json:"notionalCcy"`
-		Pos         okex.JSONFloat64    `json:"pos"`
-		NotionalUsd okex.JSONFloat64    `json:"notionalUsd"`
-		PosSide     okex.PositionSide   `json:"posSide"`
-		InstType    okex.InstrumentType `json:"instType"`
-		MgnMode     okex.MarginMode     `json:"mgnMode"`
+		NotionalCcy test.JSONFloat64    `json:"notionalCcy"`
+		Pos         test.JSONFloat64    `json:"pos"`
+		NotionalUsd test.JSONFloat64    `json:"notionalUsd"`
+		PosSide     test.PositionSide   `json:"posSide"`
+		InstType    test.InstrumentType `json:"instType"`
+		MgnMode     test.MarginMode     `json:"mgnMode"`
 	}
 	Bill struct {
 		Ccy       string              `json:"ccy"`
@@ -115,20 +115,20 @@ type (
 		Notes     string              `json:"notes"`
 		BillID    string              `json:"billId"`
 		OrdID     string              `json:"ordId"`
-		BalChg    okex.JSONFloat64    `json:"balChg"`
-		PosBalChg okex.JSONFloat64    `json:"posBalChg"`
-		Bal       okex.JSONFloat64    `json:"bal"`
-		PosBal    okex.JSONFloat64    `json:"posBal"`
-		Sz        okex.JSONFloat64    `json:"sz"`
-		Pnl       okex.JSONFloat64    `json:"pnl"`
-		Fee       okex.JSONFloat64    `json:"fee"`
-		From      okex.AccountType    `json:"from,string"`
-		To        okex.AccountType    `json:"to,string"`
-		InstType  okex.InstrumentType `json:"instType"`
-		MgnMode   okex.MarginMode     `json:"MgnMode"`
-		Type      okex.BillType       `json:"type,string"`
-		SubType   okex.BillSubType    `json:"subType,string"`
-		TS        okex.JSONTime       `json:"ts"`
+		BalChg    test.JSONFloat64    `json:"balChg"`
+		PosBalChg test.JSONFloat64    `json:"posBalChg"`
+		Bal       test.JSONFloat64    `json:"bal"`
+		PosBal    test.JSONFloat64    `json:"posBal"`
+		Sz        test.JSONFloat64    `json:"sz"`
+		Pnl       test.JSONFloat64    `json:"pnl"`
+		Fee       test.JSONFloat64    `json:"fee"`
+		From      test.AccountType    `json:"from,string"`
+		To        test.AccountType    `json:"to,string"`
+		InstType  test.InstrumentType `json:"instType"`
+		MgnMode   test.MarginMode     `json:"MgnMode"`
+		Type      test.BillType       `json:"type,string"`
+		SubType   test.BillSubType    `json:"subType,string"`
+		TS        test.JSONTime       `json:"ts"`
 	}
 	Config struct {
 		Level      string            `json:"level"`
@@ -136,71 +136,71 @@ type (
 		AcctLv     string            `json:"acctLv"`
 		AutoLoan   bool              `json:"autoLoan"`
 		UID        string            `json:"uid"`
-		GreeksType okex.GreekType    `json:"greeksType"`
-		PosMode    okex.PositionType `json:"posMode"`
+		GreeksType test.GreekType    `json:"greeksType"`
+		PosMode    test.PositionType `json:"posMode"`
 	}
 	PositionMode struct {
-		PosMode okex.PositionType `json:"posMode"`
+		PosMode test.PositionType `json:"posMode"`
 	}
 	Leverage struct {
 		InstID  string            `json:"instId"`
-		Lever   okex.JSONFloat64  `json:"lever"`
-		MgnMode okex.MarginMode   `json:"mgnMode"`
-		PosSide okex.PositionSide `json:"posSide"`
+		Lever   test.JSONFloat64  `json:"lever"`
+		MgnMode test.MarginMode   `json:"mgnMode"`
+		PosSide test.PositionSide `json:"posSide"`
 	}
 	MaxBuySellAmount struct {
 		InstID  string           `json:"instId"`
 		Ccy     string           `json:"ccy"`
-		MaxBuy  okex.JSONFloat64 `json:"maxBuy"`
-		MaxSell okex.JSONFloat64 `json:"maxSell"`
+		MaxBuy  test.JSONFloat64 `json:"maxBuy"`
+		MaxSell test.JSONFloat64 `json:"maxSell"`
 	}
 	MaxAvailableTradeAmount struct {
 		InstID    string           `json:"instId"`
-		AvailBuy  okex.JSONFloat64 `json:"availBuy"`
-		AvailSell okex.JSONFloat64 `json:"availSell"`
+		AvailBuy  test.JSONFloat64 `json:"availBuy"`
+		AvailSell test.JSONFloat64 `json:"availSell"`
 	}
 	MarginBalanceAmount struct {
 		InstID  string            `json:"instId"`
-		Amt     okex.JSONFloat64  `json:"amt"`
-		PosSide okex.PositionSide `json:"posSide,string"`
-		Type    okex.CountAction  `json:"type,string"`
+		Amt     test.JSONFloat64  `json:"amt"`
+		PosSide test.PositionSide `json:"posSide,string"`
+		Type    test.CountAction  `json:"type,string"`
 	}
 	Loan struct {
 		InstID  string           `json:"instId"`
 		MgnCcy  string           `json:"mgnCcy"`
 		Ccy     string           `json:"ccy"`
-		MaxLoan okex.JSONFloat64 `json:"maxLoan"`
-		MgnMode okex.MarginMode  `json:"mgnMode"`
-		Side    okex.OrderSide   `json:"side,string"`
+		MaxLoan test.JSONFloat64 `json:"maxLoan"`
+		MgnMode test.MarginMode  `json:"mgnMode"`
+		Side    test.OrderSide   `json:"side,string"`
 	}
 	Fee struct {
 		Level    string              `json:"level"`
-		Taker    okex.JSONFloat64    `json:"taker"`
-		Maker    okex.JSONFloat64    `json:"maker"`
-		Delivery okex.JSONFloat64    `json:"delivery,omitempty"`
-		Exercise okex.JSONFloat64    `json:"exercise,omitempty"`
-		Category okex.FeeCategory    `json:"category,string"`
-		InstType okex.InstrumentType `json:"instType"`
-		TS       okex.JSONTime       `json:"ts"`
+		Taker    test.JSONFloat64    `json:"taker"`
+		Maker    test.JSONFloat64    `json:"maker"`
+		Delivery test.JSONFloat64    `json:"delivery,omitempty"`
+		Exercise test.JSONFloat64    `json:"exercise,omitempty"`
+		Category test.FeeCategory    `json:"category,string"`
+		InstType test.InstrumentType `json:"instType"`
+		TS       test.JSONTime       `json:"ts"`
 	}
 	InterestAccrued struct {
 		InstID       string           `json:"instId"`
 		Ccy          string           `json:"ccy"`
-		Interest     okex.JSONFloat64 `json:"interest"`
-		InterestRate okex.JSONFloat64 `json:"interestRate"`
-		Liab         okex.JSONFloat64 `json:"liab"`
-		MgnMode      okex.MarginMode  `json:"mgnMode"`
-		TS           okex.JSONTime    `json:"ts"`
+		Interest     test.JSONFloat64 `json:"interest"`
+		InterestRate test.JSONFloat64 `json:"interestRate"`
+		Liab         test.JSONFloat64 `json:"liab"`
+		MgnMode      test.MarginMode  `json:"mgnMode"`
+		TS           test.JSONTime    `json:"ts"`
 	}
 	InterestRate struct {
 		Ccy          string           `json:"ccy"`
-		InterestRate okex.JSONFloat64 `json:"interestRate"`
+		InterestRate test.JSONFloat64 `json:"interestRate"`
 	}
 	Greek struct {
 		GreeksType string `json:"greeksType"`
 	}
 	MaxWithdrawal struct {
 		Ccy   string           `json:"ccy"`
-		MaxWd okex.JSONFloat64 `json:"maxWd"`
+		MaxWd test.JSONFloat64 `json:"maxWd"`
 	}
 )

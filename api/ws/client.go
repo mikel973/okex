@@ -7,9 +7,9 @@ import (
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
-	"github.com/amir-the-h/okex"
-	"github.com/amir-the-h/okex/events"
 	"github.com/gorilla/websocket"
+	"github.com/mikel973/okex"
+	"github.com/mikel973/okex/events"
 	"net/http"
 	"sync"
 	"time"
@@ -29,7 +29,7 @@ type ClientWs struct {
 	LoginChan           chan *events.Login
 	SuccessChan         chan *events.Success
 	sendChan            map[bool]chan []byte
-	url                 map[bool]okex.BaseURL
+	url                 map[bool]test.BaseURL
 	conn                map[bool]*websocket.Conn
 	apiKey              string
 	secretKey           []byte
@@ -53,7 +53,7 @@ const (
 )
 
 // NewClient returns a pointer to a fresh ClientWs
-func NewClient(ctx context.Context, apiKey, secretKey, passphrase string, url map[bool]okex.BaseURL) *ClientWs {
+func NewClient(ctx context.Context, apiKey, secretKey, passphrase string, url map[bool]test.BaseURL) *ClientWs {
 	ctx, cancel := context.WithCancel(ctx)
 	c := &ClientWs{
 		apiKey:              apiKey,
@@ -128,14 +128,14 @@ func (c *ClientWs) Login() error {
 			"sign":       sign,
 		},
 	}
-	return c.Send(true, okex.LoginOperation, args)
+	return c.Send(true, test.LoginOperation, args)
 }
 
 // Subscribe
 // Users can choose to subscribe to one or more channels, and the total length of multiple channels cannot exceed 4096 bytes.
 //
 // https://www.okex.com/docs-v5/en/#websocket-api-subscribe
-func (c *ClientWs) Subscribe(p bool, ch []okex.ChannelName, args map[string]string) error {
+func (c *ClientWs) Subscribe(p bool, ch []test.ChannelName, args map[string]string) error {
 	count := 1
 	if len(ch) != 0 {
 		count = len(ch)
@@ -149,13 +149,13 @@ func (c *ClientWs) Subscribe(p bool, ch []okex.ChannelName, args map[string]stri
 			tmpArgs[i][k] = v
 		}
 	}
-	return c.Send(p, okex.SubscribeOperation, tmpArgs)
+	return c.Send(p, test.SubscribeOperation, tmpArgs)
 }
 
 // Unsubscribe into channel(s)
 //
 // https://www.okex.com/docs-v5/en/#websocket-api-unsubscribe
-func (c *ClientWs) Unsubscribe(p bool, ch []okex.ChannelName, args map[string]string) error {
+func (c *ClientWs) Unsubscribe(p bool, ch []test.ChannelName, args map[string]string) error {
 	tmpArgs := make([]map[string]string, len(ch))
 	for i, name := range ch {
 		tmpArgs[i] = make(map[string]string)
@@ -164,12 +164,12 @@ func (c *ClientWs) Unsubscribe(p bool, ch []okex.ChannelName, args map[string]st
 			tmpArgs[i][k] = v
 		}
 	}
-	return c.Send(p, okex.UnsubscribeOperation, tmpArgs)
+	return c.Send(p, test.UnsubscribeOperation, tmpArgs)
 }
 
 // Send message through either connections
-func (c *ClientWs) Send(p bool, op okex.Operation, args []map[string]string, extras ...map[string]string) error {
-	if op != okex.LoginOperation {
+func (c *ClientWs) Send(p bool, op test.Operation, args []map[string]string, extras ...map[string]string) error {
+	if op != test.LoginOperation {
 		err := c.Connect(p)
 		if err == nil {
 			if p {

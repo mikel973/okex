@@ -3,10 +3,10 @@ package ws
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/amir-the-h/okex"
-	"github.com/amir-the-h/okex/events"
-	"github.com/amir-the-h/okex/events/public"
-	requests "github.com/amir-the-h/okex/requests/ws/public"
+	"github.com/mikel973/okex"
+	"github.com/mikel973/okex/events"
+	"github.com/mikel973/okex/events/public"
+	requests "github.com/mikel973/okex/requests/ws/public"
 	"strings"
 )
 
@@ -41,22 +41,22 @@ func NewPublic(c *ClientWs) *Public {
 //
 // https://www.okex.com/docs-v5/en/#websocket-api-public-channels-instruments-channel
 func (c *Public) Instruments(req requests.Instruments, ch ...chan *public.Instruments) error {
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	if len(ch) > 0 {
 		c.iCh = ch[0]
 	}
-	return c.Subscribe(false, []okex.ChannelName{"instruments"}, m)
+	return c.Subscribe(false, []test.ChannelName{"instruments"}, m)
 }
 
 // UInstruments
 //
 // https://www.okex.com/docs-v5/en/#websocket-api-public-channels-instruments-channel
 func (c *Public) UInstruments(req requests.Instruments, rCh ...bool) error {
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	if len(rCh) > 0 && rCh[0] {
 		c.iCh = nil
 	}
-	return c.Unsubscribe(false, []okex.ChannelName{"instruments"}, m)
+	return c.Unsubscribe(false, []test.ChannelName{"instruments"}, m)
 }
 
 // Tickers
@@ -64,22 +64,22 @@ func (c *Public) UInstruments(req requests.Instruments, rCh ...bool) error {
 //
 // https://www.okex.com/docs-v5/en/#websocket-api-public-channels-tickers-channel
 func (c *Public) Tickers(req requests.Tickers, ch ...chan *public.Tickers) error {
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	if len(ch) > 0 {
 		c.tCh = ch[0]
 	}
-	return c.Subscribe(false, []okex.ChannelName{"tickers"}, m)
+	return c.Subscribe(false, []test.ChannelName{"tickers"}, m)
 }
 
 // UTickers
 //
 // https://www.okex.com/docs-v5/en/#websocket-api-public-channels-tickers-channel
 func (c *Public) UTickers(req requests.Tickers, rCh ...bool) error {
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	if len(rCh) > 0 && rCh[0] {
 		c.tCh = nil
 	}
-	return c.Unsubscribe(false, []okex.ChannelName{"tickers"}, m)
+	return c.Unsubscribe(false, []test.ChannelName{"tickers"}, m)
 }
 
 // OpenInterest
@@ -87,22 +87,22 @@ func (c *Public) UTickers(req requests.Tickers, rCh ...bool) error {
 //
 // https://www.okex.com/docs-v5/en/#websocket-api-public-channels-open-interest-channel
 func (c *Public) OpenInterest(req requests.OpenInterest, ch ...chan *public.OpenInterest) error {
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	if len(ch) > 0 {
 		c.oiCh = ch[0]
 	}
-	return c.Subscribe(false, []okex.ChannelName{"open-interest"}, m)
+	return c.Subscribe(false, []test.ChannelName{"open-interest"}, m)
 }
 
 // UOpenInterest
 //
 // https://www.okex.com/docs-v5/en/#websocket-api-public-channels-open-interest-channel
 func (c *Public) UOpenInterest(req requests.OpenInterest, rCh ...bool) error {
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	if len(rCh) > 0 && rCh[0] {
 		c.oiCh = nil
 	}
-	return c.Unsubscribe(false, []okex.ChannelName{"open-interest"}, m)
+	return c.Unsubscribe(false, []test.ChannelName{"open-interest"}, m)
 }
 
 // Candlesticks
@@ -110,22 +110,22 @@ func (c *Public) UOpenInterest(req requests.OpenInterest, rCh ...bool) error {
 //
 // https://www.okex.com/docs-v5/en/#websocket-api-public-channels-candlesticks-channel
 func (c *Public) Candlesticks(req requests.Candlesticks, ch ...chan *public.Candlesticks) error {
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	if len(ch) > 0 {
 		c.cCh = ch[0]
 	}
-	return c.Subscribe(false, []okex.ChannelName{}, m)
+	return c.Subscribe(false, []test.ChannelName{}, m)
 }
 
 // UCandlesticks
 //
 // https://www.okex.com/docs-v5/en/#websocket-api-public-channels-candlesticks-channel
 func (c *Public) UCandlesticks(req requests.Candlesticks, rCh ...bool) error {
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	if len(rCh) > 0 && rCh[0] {
 		c.cCh = nil
 	}
-	return c.Unsubscribe(false, []okex.ChannelName{}, m)
+	return c.Unsubscribe(false, []test.ChannelName{}, m)
 }
 
 // Trades
@@ -133,22 +133,22 @@ func (c *Public) UCandlesticks(req requests.Candlesticks, rCh ...bool) error {
 //
 // https://www.okex.com/docs-v5/en/#websocket-api-public-channels-trades-channel
 func (c *Public) Trades(req requests.Trades, ch ...chan *public.Trades) error {
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	if len(ch) > 0 {
 		c.trCh = ch[0]
 	}
-	return c.Subscribe(false, []okex.ChannelName{"trades"}, m)
+	return c.Subscribe(false, []test.ChannelName{"trades"}, m)
 }
 
 // UTrades
 //
 // https://www.okex.com/docs-v5/en/#websocket-api-public-channels-trades-channel
 func (c *Public) UTrades(req requests.Trades, rCh ...bool) error {
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	if len(rCh) > 0 && rCh[0] {
 		c.trCh = nil
 	}
-	return c.Unsubscribe(false, []okex.ChannelName{"trades"}, m)
+	return c.Unsubscribe(false, []test.ChannelName{"trades"}, m)
 }
 
 // EstimatedDeliveryExercisePrice
@@ -158,22 +158,22 @@ func (c *Public) UTrades(req requests.Trades, rCh ...bool) error {
 //
 // https://www.okex.com/docs-v5/en/#websocket-api-public-channels-estimated-delivery-exercise-price-channel
 func (c *Public) EstimatedDeliveryExercisePrice(req requests.EstimatedDeliveryExercisePrice, ch ...chan *public.EstimatedDeliveryExercisePrice) error {
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	if len(ch) > 0 {
 		c.edepCh = ch[0]
 	}
-	return c.Subscribe(false, []okex.ChannelName{"estimated-price"}, m)
+	return c.Subscribe(false, []test.ChannelName{"estimated-price"}, m)
 }
 
 // UEstimatedDeliveryExercisePrice
 //
 // https://www.okex.com/docs-v5/en/#websocket-api-public-channels-estimated-delivery-exercise-price-channel
 func (c *Public) UEstimatedDeliveryExercisePrice(req requests.EstimatedDeliveryExercisePrice, rCh ...bool) error {
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	if len(rCh) > 0 && rCh[0] {
 		c.edepCh = nil
 	}
-	return c.Unsubscribe(false, []okex.ChannelName{"estimated-price"}, m)
+	return c.Unsubscribe(false, []test.ChannelName{"estimated-price"}, m)
 }
 
 // MarkPrice
@@ -181,22 +181,22 @@ func (c *Public) UEstimatedDeliveryExercisePrice(req requests.EstimatedDeliveryE
 //
 // https://www.okex.com/docs-v5/en/#websocket-api-public-channels-mark-price-channel
 func (c *Public) MarkPrice(req requests.MarkPrice, ch ...chan *public.MarkPrice) error {
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	if len(ch) > 0 {
 		c.mpCh = ch[0]
 	}
-	return c.Subscribe(false, []okex.ChannelName{"mark-price"}, m)
+	return c.Subscribe(false, []test.ChannelName{"mark-price"}, m)
 }
 
 // UMarkPrice
 //
 // https://www.okex.com/docs-v5/en/#websocket-api-public-channels-mark-price-channel
 func (c *Public) UMarkPrice(req requests.MarkPrice, rCh ...bool) error {
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	if len(rCh) > 0 && rCh[0] {
 		c.mpCh = nil
 	}
-	return c.Unsubscribe(false, []okex.ChannelName{"mark-price"}, m)
+	return c.Unsubscribe(false, []test.ChannelName{"mark-price"}, m)
 }
 
 // MarkPriceCandlesticks
@@ -204,24 +204,24 @@ func (c *Public) UMarkPrice(req requests.MarkPrice, rCh ...bool) error {
 //
 // https://www.okex.com/docs-v5/en/#websocket-api-public-channels-mark-price-candlesticks-channel
 func (c *Public) MarkPriceCandlesticks(req requests.MarkPriceCandlesticks, ch ...chan *public.MarkPriceCandlesticks) error {
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	m["channel"] = "mark-price-" + m["channel"]
 	if len(ch) > 0 {
 		c.mpcCh = ch[0]
 	}
-	return c.Subscribe(false, []okex.ChannelName{}, m)
+	return c.Subscribe(false, []test.ChannelName{}, m)
 }
 
 // UMarkPriceCandlesticks
 //
 // https://www.okex.com/docs-v5/en/#websocket-api-public-channels-mark-price-candlesticks-channel
 func (c *Public) UMarkPriceCandlesticks(req requests.MarkPriceCandlesticks, rCh ...bool) error {
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	m["channel"] = "mark-price-" + m["channel"]
 	if len(rCh) > 0 && rCh[0] {
 		c.mpcCh = nil
 	}
-	return c.Unsubscribe(false, []okex.ChannelName{}, m)
+	return c.Unsubscribe(false, []test.ChannelName{}, m)
 }
 
 // PriceLimit
@@ -229,22 +229,22 @@ func (c *Public) UMarkPriceCandlesticks(req requests.MarkPriceCandlesticks, rCh 
 //
 // https://www.okex.com/docs-v5/en/#websocket-api-public-channels-price-limit-channel
 func (c *Public) PriceLimit(req requests.PriceLimit, ch ...chan *public.PriceLimit) error {
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	if len(ch) > 0 {
 		c.plCh = ch[0]
 	}
-	return c.Subscribe(false, []okex.ChannelName{"price-limit"}, m)
+	return c.Subscribe(false, []test.ChannelName{"price-limit"}, m)
 }
 
 // UPriceLimit
 //
 // https://www.okex.com/docs-v5/en/#websocket-api-public-channels-price-limit-channel
 func (c *Public) UPriceLimit(req requests.PriceLimit, rCh ...bool) error {
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	if len(rCh) > 0 && rCh[0] {
 		c.plCh = nil
 	}
-	return c.Unsubscribe(false, []okex.ChannelName{"price-limit"}, m)
+	return c.Unsubscribe(false, []test.ChannelName{"price-limit"}, m)
 }
 
 // OrderBook
@@ -254,22 +254,22 @@ func (c *Public) UPriceLimit(req requests.PriceLimit, rCh ...bool) error {
 //
 // https://www.okex.com/docs-v5/en/#websocket-api-public-channels-order-book-channel
 func (c *Public) OrderBook(req requests.OrderBook, ch ...chan *public.OrderBook) error {
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	if len(ch) > 0 {
 		c.obCh = ch[0]
 	}
-	return c.Subscribe(false, []okex.ChannelName{}, m)
+	return c.Subscribe(false, []test.ChannelName{}, m)
 }
 
 // UOrderBook
 //
 // https://www.okex.com/docs-v5/en/#websocket-api-public-channels-order-book-channel
 func (c *Public) UOrderBook(req requests.OrderBook, rCh ...bool) error {
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	if len(rCh) > 0 && rCh[0] {
 		c.obCh = nil
 	}
-	return c.Unsubscribe(false, []okex.ChannelName{okex.ChannelName(req.Channel)}, m)
+	return c.Unsubscribe(false, []test.ChannelName{test.ChannelName(req.Channel)}, m)
 }
 
 // OPTIONSummary
@@ -277,22 +277,22 @@ func (c *Public) UOrderBook(req requests.OrderBook, rCh ...bool) error {
 //
 // https://www.okex.com/docs-v5/en/#websocket-api-public-channels-option-summary-channel
 func (c *Public) OPTIONSummary(req requests.OPTIONSummary, ch ...chan *public.OPTIONSummary) error {
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	if len(ch) > 0 {
 		c.osCh = ch[0]
 	}
-	return c.Subscribe(false, []okex.ChannelName{"opt-summary"}, m)
+	return c.Subscribe(false, []test.ChannelName{"opt-summary"}, m)
 }
 
 // UOPTIONSummary
 //
 // https://www.okex.com/docs-v5/en/#websocket-api-public-channels-option-summary-channel
 func (c *Public) UOPTIONSummary(req requests.OPTIONSummary, rCh ...bool) error {
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	if len(rCh) > 0 && rCh[0] {
 		c.osCh = nil
 	}
-	return c.Unsubscribe(false, []okex.ChannelName{"opt-summary"}, m)
+	return c.Unsubscribe(false, []test.ChannelName{"opt-summary"}, m)
 }
 
 // FundingRate
@@ -300,22 +300,22 @@ func (c *Public) UOPTIONSummary(req requests.OPTIONSummary, rCh ...bool) error {
 //
 // https://www.okex.com/docs-v5/en/#websocket-api-public-channels-funding-rate-channel
 func (c *Public) FundingRate(req requests.FundingRate, ch ...chan *public.FundingRate) error {
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	if len(ch) > 0 {
 		c.frCh = ch[0]
 	}
-	return c.Subscribe(false, []okex.ChannelName{"funding-rate"}, m)
+	return c.Subscribe(false, []test.ChannelName{"funding-rate"}, m)
 }
 
 // UFundingRate
 //
 // https://www.okex.com/docs-v5/en/#websocket-api-public-channels-funding-rate-channel
 func (c *Public) UFundingRate(req requests.FundingRate, rCh ...bool) error {
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	if len(rCh) > 0 && rCh[0] {
 		c.frCh = nil
 	}
-	return c.Unsubscribe(false, []okex.ChannelName{"funding-rate"}, m)
+	return c.Unsubscribe(false, []test.ChannelName{"funding-rate"}, m)
 }
 
 // IndexCandlesticks
@@ -323,24 +323,24 @@ func (c *Public) UFundingRate(req requests.FundingRate, rCh ...bool) error {
 //
 // https://www.okex.com/docs-v5/en/#websocket-api-public-channels-index-candlesticks-channel
 func (c *Public) IndexCandlesticks(req requests.IndexCandlesticks, ch ...chan *public.IndexCandlesticks) error {
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	m["channel"] = req.Channel
 	if len(ch) > 0 {
 		c.icCh = ch[0]
 	}
-	return c.Subscribe(false, []okex.ChannelName{}, m)
+	return c.Subscribe(false, []test.ChannelName{}, m)
 }
 
 // UIndexCandlesticks
 //
 // https://www.okex.com/docs-v5/en/#websocket-api-public-channels-index-candlesticks-channel
 func (c *Public) UIndexCandlesticks(req requests.IndexCandlesticks, rCh ...bool) error {
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	m["channel"] = req.Channel
 	if len(rCh) > 0 && rCh[0] {
 		c.icCh = nil
 	}
-	return c.Unsubscribe(false, []okex.ChannelName{}, m)
+	return c.Unsubscribe(false, []test.ChannelName{}, m)
 }
 
 // IndexTickers
@@ -348,22 +348,22 @@ func (c *Public) UIndexCandlesticks(req requests.IndexCandlesticks, rCh ...bool)
 //
 // https://www.okex.com/docs-v5/en/#websocket-api-public-channels-index-tickers-channel
 func (c *Public) IndexTickers(req requests.IndexTickers, ch ...chan *public.IndexTickers) error {
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	if len(ch) > 0 {
 		c.itCh = ch[0]
 	}
-	return c.Subscribe(false, []okex.ChannelName{"index-tickers"}, m)
+	return c.Subscribe(false, []test.ChannelName{"index-tickers"}, m)
 }
 
 // UIndexTickers
 //
 // https://www.okex.com/docs-v5/en/#websocket-api-public-channels-index-tickers-channel
 func (c *Public) UIndexTickers(req requests.IndexTickers, rCh ...bool) error {
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	if len(rCh) > 0 && rCh[0] {
 		c.itCh = nil
 	}
-	return c.Unsubscribe(false, []okex.ChannelName{"index-tickers"}, m)
+	return c.Unsubscribe(false, []test.ChannelName{"index-tickers"}, m)
 }
 
 func (c *Public) Process(data []byte, e *events.Basic) bool {

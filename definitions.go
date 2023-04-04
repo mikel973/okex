@@ -1,7 +1,7 @@
 // Package okex is generally a golang Api wrapper of Okex V5 API
 //
 // https://www.okx.com/docs-v5/en
-package okex
+package test
 
 import (
 	"encoding/json"

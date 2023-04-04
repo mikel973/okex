@@ -1,6 +1,6 @@
 package private
 
-import "github.com/amir-the-h/okex"
+import "github.com/mikel973/okex"
 
 type (
 	Account struct {
@@ -9,16 +9,16 @@ type (
 	Position struct {
 		Uly      string              `json:"uly,omitempty"`
 		InstID   string              `json:"instId,omitempty"`
-		InstType okex.InstrumentType `json:"instType"`
+		InstType test.InstrumentType `json:"instType"`
 	}
 	Order struct {
 		Uly      string              `json:"uly,omitempty"`
 		InstID   string              `json:"instId,omitempty"`
-		InstType okex.InstrumentType `json:"instType"`
+		InstType test.InstrumentType `json:"instType"`
 	}
 	AlgoOrder struct {
 		Uly      string              `json:"uly,omitempty"`
 		InstID   string              `json:"instId,omitempty"`
-		InstType okex.InstrumentType `json:"instType"`
+		InstType test.InstrumentType `json:"instType"`
 	}
 )

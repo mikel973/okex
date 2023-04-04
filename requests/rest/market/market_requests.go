@@ -1,11 +1,11 @@
 package market
 
-import "github.com/amir-the-h/okex"
+import "github.com/mikel973/okex"
 
 type (
 	GetTickers struct {
 		Uly      string              `json:"uly,omitempty"`
-		InstType okex.InstrumentType `json:"instType"`
+		InstType test.InstrumentType `json:"instType"`
 	}
 	GetTicker struct {
 		InstId string `json:"instId"`
@@ -23,7 +23,7 @@ type (
 		After  int64        `json:"after,omitempty,string"`
 		Before int64        `json:"before,omitempty,string"`
 		Limit  int64        `json:"limit,omitempty,string"`
-		Bar    okex.BarSize `json:"bar,omitempty"`
+		Bar    test.BarSize `json:"bar,omitempty"`
 	}
 	GetTrades struct {
 		InstID string `json:"instId"`

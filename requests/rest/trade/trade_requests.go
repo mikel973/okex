@@ -1,7 +1,7 @@
 package trade
 
 import (
-	"github.com/amir-the-h/okex"
+	"github.com/mikel973/okex"
 )
 
 type (
@@ -14,11 +14,11 @@ type (
 		ReduceOnly bool              `json:"reduceOnly,omitempty"`
 		Sz         float64           `json:"sz,string"`
 		Px         float64           `json:"px,omitempty,string"`
-		TdMode     okex.TradeMode    `json:"tdMode"`
-		Side       okex.OrderSide    `json:"side"`
-		PosSide    okex.PositionSide `json:"posSide,omitempty"`
-		OrdType    okex.OrderType    `json:"ordType"`
-		TgtCcy     okex.QuantityType `json:"tgtCcy,omitempty"`
+		TdMode     test.TradeMode    `json:"tdMode"`
+		Side       test.OrderSide    `json:"side"`
+		PosSide    test.PositionSide `json:"posSide,omitempty"`
+		OrdType    test.OrderType    `json:"ordType"`
+		TgtCcy     test.QuantityType `json:"tgtCcy,omitempty"`
 	}
 	CancelOrder struct {
 		ID      string `json:"-"`
@@ -39,8 +39,8 @@ type (
 	ClosePosition struct {
 		InstID  string            `json:"instId"`
 		Ccy     string            `json:"ccy,omitempty"`
-		PosSide okex.PositionSide `json:"posSide,omitempty"`
-		MgnMode okex.MarginMode   `json:"mgnMode"`
+		PosSide test.PositionSide `json:"posSide,omitempty"`
+		MgnMode test.MarginMode   `json:"mgnMode"`
 	}
 	OrderDetails struct {
 		InstID  string `json:"instId"`
@@ -53,9 +53,9 @@ type (
 		After    float64             `json:"after,omitempty,string"`
 		Before   float64             `json:"before,omitempty,string"`
 		Limit    float64             `json:"limit,omitempty,string"`
-		InstType okex.InstrumentType `json:"instType,omitempty"`
-		OrdType  okex.OrderType      `json:"ordType,omitempty"`
-		State    okex.OrderState     `json:"state,omitempty"`
+		InstType test.InstrumentType `json:"instType,omitempty"`
+		OrdType  test.OrderType      `json:"ordType,omitempty"`
+		State    test.OrderState     `json:"state,omitempty"`
 	}
 	TransactionDetails struct {
 		Uly      string              `json:"uly,omitempty"`
@@ -64,18 +64,18 @@ type (
 		After    float64             `json:"after,omitempty,string"`
 		Before   float64             `json:"before,omitempty,string"`
 		Limit    float64             `json:"limit,omitempty,string"`
-		InstType okex.InstrumentType `json:"instType,omitempty"`
+		InstType test.InstrumentType `json:"instType,omitempty"`
 	}
 	PlaceAlgoOrder struct {
 		InstID     string             `json:"instId"`
-		TdMode     okex.TradeMode     `json:"tdMode"`
+		TdMode     test.TradeMode     `json:"tdMode"`
 		Ccy        string             `json:"ccy,omitempty"`
-		Side       okex.OrderSide     `json:"side"`
-		PosSide    okex.PositionSide  `json:"posSide,omitempty"`
-		OrdType    okex.AlgoOrderType `json:"ordType"`
+		Side       test.OrderSide     `json:"side"`
+		PosSide    test.PositionSide  `json:"posSide,omitempty"`
+		OrdType    test.AlgoOrderType `json:"ordType"`
 		Sz         int64              `json:"sz,string"`
 		ReduceOnly bool               `json:"reduceOnly,omitempty"`
-		TgtCcy     okex.QuantityType  `json:"tgtCcy,omitempty"`
+		TgtCcy     test.QuantityType  `json:"tgtCcy,omitempty"`
 		StopOrder
 		TriggerOrder
 		IcebergOrder
@@ -106,13 +106,13 @@ type (
 		AlgoID string `json:"AlgoId"`
 	}
 	AlgoOrderList struct {
-		InstType okex.InstrumentType `json:"instType,omitempty"`
+		InstType test.InstrumentType `json:"instType,omitempty"`
 		Uly      string              `json:"uly,omitempty"`
 		InstID   string              `json:"instId,omitempty"`
 		After    float64             `json:"after,omitempty,string"`
 		Before   float64             `json:"before,omitempty,string"`
 		Limit    float64             `json:"limit,omitempty,string"`
-		OrdType  okex.AlgoOrderType  `json:"ordType,omitempty"`
-		State    okex.OrderState     `json:"state,omitempty"`
+		OrdType  test.AlgoOrderType  `json:"ordType,omitempty"`
+		State    test.OrderState     `json:"state,omitempty"`
 	}
 )

@@ -2,9 +2,9 @@ package rest
 
 import (
 	"encoding/json"
-	"github.com/amir-the-h/okex"
-	requests "github.com/amir-the-h/okex/requests/rest/account"
-	responses "github.com/amir-the-h/okex/responses/account"
+	"github.com/mikel973/okex"
+	requests "github.com/mikel973/okex/requests/rest/account"
+	responses "github.com/mikel973/okex/responses/account"
 	"net/http"
 	"strings"
 )
@@ -27,7 +27,7 @@ func NewAccount(c *ClientRest) *Account {
 // https://www.okex.com/docs-v5/en/#rest-api-account-get-balance
 func (c *Account) GetBalance(req requests.GetBalance) (response responses.GetBalance, err error) {
 	p := "/api/v5/account/balance"
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	if len(req.Ccy) > 0 {
 		m["ccy"] = strings.Join(req.Ccy, ",")
 	}
@@ -48,7 +48,7 @@ func (c *Account) GetBalance(req requests.GetBalance) (response responses.GetBal
 // https://www.okex.com/docs-v5/en/#rest-api-account-get-positions
 func (c *Account) GetPositions(req requests.GetPositions) (response responses.GetPositions, err error) {
 	p := "/api/v5/account/positions"
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	if len(req.InstID) > 0 {
 		m["instId"] = strings.Join(req.InstID, ",")
 	}
@@ -72,7 +72,7 @@ func (c *Account) GetPositions(req requests.GetPositions) (response responses.Ge
 // https://www.okex.com/docs-v5/en/#rest-api-account-get-account-and-position-risk
 func (c *Account) GetAccountAndPositionRisk(req requests.GetAccountAndPositionRisk) (response responses.GetAccountAndPositionRisk, err error) {
 	p := "/api/v5/account/positions"
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	res, err := c.client.Do(http.MethodGet, p, true, m)
 	if err != nil {
 		return
@@ -97,7 +97,7 @@ func (c *Account) GetBills(req requests.GetBills, arc bool) (response responses.
 	if arc {
 		p = "/api/account/bills-archive"
 	}
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	res, err := c.client.Do(http.MethodGet, p, true, m)
 	if err != nil {
 		return
@@ -132,7 +132,7 @@ func (c *Account) GetConfig() (response responses.GetConfig, err error) {
 // https://www.okex.com/docs-v5/en/#rest-api-account-set-position-mode
 func (c *Account) SetPositionMode(req requests.SetPositionMode) (response responses.SetPositionMode, err error) {
 	p := "/api/v5/account/set-position-mode"
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	res, err := c.client.Do(http.MethodPost, p, true, m)
 	if err != nil {
 		return
@@ -157,7 +157,7 @@ func (c *Account) SetPositionMode(req requests.SetPositionMode) (response respon
 // https://www.okex.com/docs-v5/en/#rest-api-account-set-leverage
 func (c *Account) SetLeverage(req requests.SetLeverage) (response responses.Leverage, err error) {
 	p := "/api/v5/account/set-leverage"
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	res, err := c.client.Do(http.MethodPost, p, true, m)
 	if err != nil {
 		return
@@ -174,7 +174,7 @@ func (c *Account) SetLeverage(req requests.SetLeverage) (response responses.Leve
 // https://www.okex.com/docs-v5/en/#rest-api-account-get-maximum-buy-sell-amount-or-open-amount
 func (c *Account) GetMaxBuySellAmount(req requests.GetMaxBuySellAmount) (response responses.GetMaxBuySellAmount, err error) {
 	p := "/api/v5/account/max-size"
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	if len(req.InstID) > 0 {
 		m["instId"] = strings.Join(req.InstID, ",")
 	}
@@ -194,7 +194,7 @@ func (c *Account) GetMaxBuySellAmount(req requests.GetMaxBuySellAmount) (respons
 // https://www.okex.com/docs-v5/en/#rest-api-account-get-maximum-available-tradable-amount
 func (c *Account) GetMaxAvailableTradeAmount(req requests.GetMaxAvailableTradeAmount) (response responses.GetMaxAvailableTradeAmount, err error) {
 	p := "/api/v5/account/max-avail-size"
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	res, err := c.client.Do(http.MethodGet, p, true, m)
 	if err != nil {
 		return
@@ -212,7 +212,7 @@ func (c *Account) GetMaxAvailableTradeAmount(req requests.GetMaxAvailableTradeAm
 // https://www.okex.com/docs-v5/en/#rest-api-account-increase-decrease-margin
 func (c *Account) IncreaseDecreaseMargin(req requests.IncreaseDecreaseMargin) (response responses.IncreaseDecreaseMargin, err error) {
 	p := "/api/v5/account/position/margin-balance"
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	res, err := c.client.Do(http.MethodPost, p, true, m)
 	if err != nil {
 		return
@@ -229,7 +229,7 @@ func (c *Account) IncreaseDecreaseMargin(req requests.IncreaseDecreaseMargin) (r
 // https://www.okex.com/docs-v5/en/#rest-api-account-get-leverage
 func (c *Account) GetLeverage(req requests.GetLeverage) (response responses.Leverage, err error) {
 	p := "/api/v5/account/leverage-info"
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	if len(req.InstID) > 0 {
 		m["instId"] = strings.Join(req.InstID, ",")
 	}
@@ -249,7 +249,7 @@ func (c *Account) GetLeverage(req requests.GetLeverage) (response responses.Leve
 // https://www.okex.com/docs-v5/en/#rest-api-account-get-the-maximum-loan-of-instrument
 func (c *Account) GetMaxLoan(req requests.GetMaxLoan) (response responses.GetMaxLoan, err error) {
 	p := "/api/v5/account/max-loan"
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	res, err := c.client.Do(http.MethodGet, p, true, m)
 	if err != nil {
 		return
@@ -266,7 +266,7 @@ func (c *Account) GetMaxLoan(req requests.GetMaxLoan) (response responses.GetMax
 // https://www.okex.com/docs-v5/en/#rest-api-account-get-fee-rates
 func (c *Account) GetFeeRates(req requests.GetFeeRates) (response responses.GetFeeRates, err error) {
 	p := "/api/v5/account/trade-fee"
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	res, err := c.client.Do(http.MethodGet, p, true, m)
 	if err != nil {
 		return
@@ -283,7 +283,7 @@ func (c *Account) GetFeeRates(req requests.GetFeeRates) (response responses.GetF
 // https://www.okex.com/docs-v5/en/#rest-api-account-get-interest-accrued
 func (c *Account) GetInterestAccrued(req requests.GetInterestAccrued) (response responses.GetInterestAccrued, err error) {
 	p := "/api/v5/account/interest-accrued"
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	res, err := c.client.Do(http.MethodGet, p, true, m)
 	if err != nil {
 		return
@@ -301,7 +301,7 @@ func (c *Account) GetInterestAccrued(req requests.GetInterestAccrued) (response 
 // https://www.okex.com/docs-v5/en/#rest-api-account-get-interest-rate
 func (c *Account) GetInterestRates(req requests.GetBalance) (response responses.GetInterestRates, err error) {
 	p := "/api/v5/account/interest-rate"
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	if len(req.Ccy) > 0 {
 		m["ccy"] = strings.Join(req.Ccy, ",")
 	}
@@ -322,7 +322,7 @@ func (c *Account) GetInterestRates(req requests.GetBalance) (response responses.
 // https://www.okex.com/docs-v5/en/#rest-api-account-set-greeks-m-bs
 func (c *Account) SetGreeks(req requests.SetGreeks) (response responses.SetGreeks, err error) {
 	p := "/api/v5/account/set-greeks"
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	res, err := c.client.Do(http.MethodPost, p, true, m)
 	if err != nil {
 		return
@@ -339,7 +339,7 @@ func (c *Account) SetGreeks(req requests.SetGreeks) (response responses.SetGreek
 // https://www.okex.com/docs-v5/en/#rest-api-account-get-maximum-withdrawals
 func (c *Account) GetMaxWithdrawals(req requests.GetBalance) (response responses.GetMaxWithdrawals, err error) {
 	p := "/api/v5/account/max-withdrawal"
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	if len(req.Ccy) > 0 {
 		m["ccy"] = strings.Join(req.Ccy, ",")
 	}

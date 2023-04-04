@@ -2,9 +2,9 @@ package rest
 
 import (
 	"encoding/json"
-	"github.com/amir-the-h/okex"
-	requests "github.com/amir-the-h/okex/requests/rest/tradedata"
-	responses "github.com/amir-the-h/okex/responses/trade_data"
+	"github.com/mikel973/okex"
+	requests "github.com/mikel973/okex/requests/rest/tradedata"
+	responses "github.com/mikel973/okex/responses/trade_data"
 	"net/http"
 )
 
@@ -42,7 +42,7 @@ func (c *TradeData) GetSupportCoin() (response responses.GetSupportCoin, err err
 // https://www.okex.com/docs-v5/en/#rest-api-trading-data-get-support-coin
 func (c *TradeData) GetTakerVolume(req requests.GetTakerVolume) (response responses.GetTakerVolume, err error) {
 	p := "/api/v5/rubik/stat/taker-volume"
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	res, err := c.client.Do(http.MethodGet, p, false, m)
 	if err != nil {
 		return
@@ -59,7 +59,7 @@ func (c *TradeData) GetTakerVolume(req requests.GetTakerVolume) (response respon
 // https://www.okex.com/docs-v5/en/#rest-api-trading-data-get-margin-lending-ratio
 func (c *TradeData) GetMarginLendingRatio(req requests.GetRatio) (response responses.GetRatio, err error) {
 	p := "/api/v5/rubik/stat/margin/loan-ratio"
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	res, err := c.client.Do(http.MethodGet, p, false, m)
 	if err != nil {
 		return
@@ -76,7 +76,7 @@ func (c *TradeData) GetMarginLendingRatio(req requests.GetRatio) (response respo
 // https://www.okex.com/docs-v5/en/#rest-api-trading-data-get-long-short-ratio
 func (c *TradeData) GetLongShortRatio(req requests.GetRatio) (response responses.GetRatio, err error) {
 	p := "/api/v5/rubik/stat/contracts/long-short-account-ratio"
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	res, err := c.client.Do(http.MethodGet, p, false, m)
 	if err != nil {
 		return
@@ -93,7 +93,7 @@ func (c *TradeData) GetLongShortRatio(req requests.GetRatio) (response responses
 // https://www.okex.com/docs-v5/en/#rest-api-trading-data-get-contracts-open-interest-and-volume
 func (c *TradeData) GetContractsOpenInterestAndVolume(req requests.GetRatio) (response responses.GetOpenInterestAndVolume, err error) {
 	p := "/api/v5/rubik/stat/contracts/open-interest-volume"
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	res, err := c.client.Do(http.MethodGet, p, false, m)
 	if err != nil {
 		return
@@ -110,7 +110,7 @@ func (c *TradeData) GetContractsOpenInterestAndVolume(req requests.GetRatio) (re
 // https://www.okex.com/docs-v5/en/#rest-api-trading-data-get-options-open-interest-and-volume
 func (c *TradeData) GetOptionsOpenInterestAndVolume(req requests.GetRatio) (response responses.GetOpenInterestAndVolume, err error) {
 	p := "/api/v5/rubik/stat/option/open-interest-volume"
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	res, err := c.client.Do(http.MethodGet, p, false, m)
 	if err != nil {
 		return
@@ -127,7 +127,7 @@ func (c *TradeData) GetOptionsOpenInterestAndVolume(req requests.GetRatio) (resp
 // https://www.okex.com/docs-v5/en/#rest-api-trading-data-get-put-call-ratio
 func (c *TradeData) GetPutCallRatio(req requests.GetRatio) (response responses.GetPutCallRatio, err error) {
 	p := "/api/v5/rubik/stat/option/open-interest-volume-ratio"
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	res, err := c.client.Do(http.MethodGet, p, false, m)
 	if err != nil {
 		return
@@ -144,7 +144,7 @@ func (c *TradeData) GetPutCallRatio(req requests.GetRatio) (response responses.G
 // https://www.okex.com/docs-v5/en/#rest-api-trading-data-get-open-interest-and-volume-expiry
 func (c *TradeData) GetOpenInterestAndVolumeExpiry(req requests.GetRatio) (response responses.GetOpenInterestAndVolumeExpiry, err error) {
 	p := "/api/v5/rubik/stat/option/open-interest-volume-expiry"
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	res, err := c.client.Do(http.MethodGet, p, false, m)
 	if err != nil {
 		return
@@ -161,7 +161,7 @@ func (c *TradeData) GetOpenInterestAndVolumeExpiry(req requests.GetRatio) (respo
 // https://www.okex.com/docs-v5/en/#rest-api-trading-data-get-open-interest-and-volume-strike
 func (c *TradeData) GetOpenInterestAndVolumeStrike(req requests.GetOpenInterestAndVolumeStrike) (response responses.GetOpenInterestAndVolumeStrike, err error) {
 	p := "/api/v5/rubik/stat/option/open-interest-volume-strike"
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	res, err := c.client.Do(http.MethodGet, p, false, m)
 	if err != nil {
 		return
@@ -178,7 +178,7 @@ func (c *TradeData) GetOpenInterestAndVolumeStrike(req requests.GetOpenInterestA
 // https://www.okex.com/docs-v5/en/#rest-api-trading-data-get-taker-flow
 func (c *TradeData) GetTakerFlow(req requests.GetRatio) (response responses.GetTakerFlow, err error) {
 	p := "/api/v5/rubik/stat/option/taker-block-volume"
-	m := okex.S2M(req)
+	m := test.S2M(req)
 	res, err := c.client.Do(http.MethodGet, p, false, m)
 	if err != nil {
 		return
