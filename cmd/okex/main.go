@@ -15,7 +15,7 @@ func main() {
 	app := &cli.App{
 		Name:     "okex",
 		Usage:    "Utility for okex api v5",
-		Commands: []*cli.Command{MarketCmd},
+		Commands: []*cli.Command{marketCmd, daemonCmd},
 	}
 
 	if err := app.Run(os.Args); err != nil {
