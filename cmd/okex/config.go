@@ -8,10 +8,11 @@ import (
 )
 
 type ClientConf struct {
-	ApiKey string           `toml:"api_key"`
-	Secret string           `toml:"secret"`
-	Phrase string           `toml:"phrase"`
-	Server test.Destination `toml:"server"`
+	LogLevel string           `toml:"log_level"`
+	ApiKey   string           `toml:"api_key"`
+	Secret   string           `toml:"secret"`
+	Phrase   string           `toml:"phrase"`
+	Server   test.Destination `toml:"server"`
 }
 
 var config *ClientConf
@@ -46,6 +47,7 @@ func initConfig(confFile string) {
 	_, err := os.Stat(confFile)
 	if os.IsNotExist(err) {
 		defaultConf := ClientConf{
+			"INFO",
 			"YOUR-API-KEY",
 			"YOUR-SECRET-KEY",
 			"YOUR-PASS-PHRASE",
@@ -71,4 +73,6 @@ func initConfig(confFile string) {
 			logs.GetLog().Fatal("Required fields not given")
 		}
 	}
+	logs.GetLog().Info("Set log level is:", config.LogLevel)
+	logs.SetLogLevel(config.LogLevel)
 }

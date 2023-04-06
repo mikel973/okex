@@ -9,7 +9,7 @@ var log *logging.ZapEventLogger
 func GetLog() *logging.ZapEventLogger {
 	if log == nil {
 		log = logging.Logger("okex")
-		logging.SetLogLevel("okex", "DEBUG")
+		logging.SetLogLevel("okex", "INFO")
 	}
 
 	return log
